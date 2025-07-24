@@ -1,0 +1,36 @@
+.email {
+    display: flex;
+    height: 10%;
+    width: 50%;
+    border-radius: 1em;
+    border: 0.2em solid white;
+    background-color: grey;
+    justify-content: center;
+}
+
+.email-content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding: 1%;
+    flex-direction: column;
+}
+
+.top-row {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bottom-row {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+p {
+    margin: 0;
+}
