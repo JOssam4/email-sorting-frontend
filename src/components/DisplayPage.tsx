@@ -1,15 +1,32 @@
 import Priority from '../types/Priority';
 import type EmailType from '../types/Email';
 import Email from './Email';
+import { useQuery } from '@tanstack/react-query';
 import '../styles/DisplayPage.css';
 
 interface Props {
     priority: Priority;
-    emails: EmailType[];
 }
 
 export default function DisplayPage(props: Props) {
-    const emailsToDisplay = props.emails.map((email, index: number) =>
+    const { isPending, error, data } = useQuery({
+        queryKey: ['lowPriorityEmails'],
+        queryFn: () => fetch('http://localhost:8000/api/priorities/low').then(res => res.json()),
+        retry: false,
+        staleTime: 5000, // refetch after 5 minutes
+    });
+
+    if (isPending) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error.message}</p>;
+    }
+
+    const emails = data as EmailType[];
+
+    const emailsToDisplay = emails.map((email, index: number) =>
         <Email link={email.link}
                time_sent={email.time_sent}
                sent_from={email.sent_from}
@@ -21,8 +38,10 @@ export default function DisplayPage(props: Props) {
         return <p>No emails to display!</p>;
     }
     const displayPageClassname = `display-page ${props.priority}`;
+    const header = `${props.priority} priority emails`;
     return (
         <div className={displayPageClassname}>
+            <h1>{header}</h1>
             {emailsToDisplay}
         </div>
     );
