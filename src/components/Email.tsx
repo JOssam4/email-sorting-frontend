@@ -6,7 +6,7 @@ function Email(props: EmailType) {
     return (
         <>
             <div className="email-card">
-                <a href={props.link}>{props.subject}</a>
+                <a href={props.link} target="_blank" rel="noopener noreferrer">{props.subject}</a>
                 <div className="email-info">
                     <span className="label">From:</span> {props.sent_from}
                 </div>

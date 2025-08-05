@@ -1,10 +1,27 @@
-import { Link } from "react-router";
+import { Link } from 'react-router';
+import '../styles/EmailsPage.css';
+
 export default function EmailsPage() {
     return (
-        <div className="display-page-wrapper">
-            <Link to="/emails/priority/low">Low Priority Emails</Link>
-            <Link to="/emails/priority/medium">Medium Priority Emails</Link>
-            <Link to="/emails/priority/high">High Priority Emails</Link>
+        <div id="emails-page">
+            <Link
+                to="/emails/priority/low"
+                className="link link-low"
+            >
+                Low Priority
+            </Link>
+            <Link
+                to="/emails/priority/medium"
+                className="link link-medium"
+            >
+                Medium Priority
+            </Link>
+            <Link
+                to="/emails/priority/high"
+                className="link link-high"
+            >
+                High Priority
+            </Link>
         </div>
-    )
-}
+    );
+};

@@ -8,13 +8,13 @@
 }
 
 .low {
-    background-color: green;
+    background-color: #4ade80;
 }
 
 .medium {
-    background-color: yellow;
+    background-color: #facc15;
 }
 
 .high {
-    background-color: red;
+    background-color: #f87171;
 }

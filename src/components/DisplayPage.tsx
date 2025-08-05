@@ -9,9 +9,20 @@ interface Props {
 }
 
 export default function DisplayPage(props: Props) {
+    function getQueryUrl(priority: Priority): string {
+        let priorityInUrl = '';
+        if (priority === Priority.LOW) {
+            priorityInUrl = 'low';
+        } else if (priority === Priority.MEDIUM) {
+            priorityInUrl = 'medium';
+        } else {
+            priorityInUrl = 'high';
+        }
+        return `http://localhost:8000/api/priorities/${priorityInUrl}`;
+    }
     const { isPending, error, data } = useQuery({
-        queryKey: ['lowPriorityEmails'],
-        queryFn: () => fetch('http://localhost:8000/api/priorities/low').then(res => res.json()),
+        queryKey: [`${props.priority}PriorityEmails`],
+        queryFn: () => fetch(getQueryUrl(props.priority)).then(res => res.json()),
         retry: false,
         staleTime: 5000, // refetch after 5 minutes
     });
