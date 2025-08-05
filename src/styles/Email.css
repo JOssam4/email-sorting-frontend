@@ -1,36 +1,27 @@
-.email {
-    display: flex;
-    height: 10%;
+.email-card {
     width: 50%;
-    border-radius: 1em;
-    border: 0.2em solid white;
-    background-color: grey;
-    justify-content: center;
+    padding: 16px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-family: Arial, sans-serif;
 }
 
-.email-content {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    padding: 1%;
-    flex-direction: column;
+.email-subject {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
 }
 
-.top-row {
-    width: 100%;
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: space-between;
+.email-info {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 4px;
 }
 
-.bottom-row {
-    width: 100%;
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-}
-
-p {
-    margin: 0;
+.label {
+    font-weight: 500;
+    color: #444;
 }

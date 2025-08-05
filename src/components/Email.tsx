@@ -5,15 +5,13 @@ function Email(props: EmailType) {
 
     return (
         <>
-            <div className="email">
-                <div className="email-content">
-                    <div className="top-row">
-                        <a href={props.link}>{props.subject}</a>
-                        <p>{props.time_sent.toString()}</p>
-                    </div>
-                    <div className="bottom-row">
-                        <p>Sent from {props.sent_from}</p>
-                    </div>
+            <div className="email-card">
+                <a href={props.link}>{props.subject}</a>
+                <div className="email-info">
+                    <span className="label">From:</span> {props.sent_from}
+                </div>
+                <div className="email-info">
+                    <span className="label">Sent:</span> {props.time_sent.toLocaleString()}
                 </div>
             </div>
         </>
