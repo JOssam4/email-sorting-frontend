@@ -45,15 +45,15 @@ export default function DisplayPage(props: Props) {
                priority={email.priority}
                key={index}
         />);
-    if (emailsToDisplay.length === 0) {
-        return <p>No emails to display!</p>;
-    }
     const displayPageClassname = `display-page ${props.priority}`;
     const header = `${props.priority} priority emails`;
     return (
         <div className={displayPageClassname}>
             <h1>{header}</h1>
-            {emailsToDisplay}
+            {emailsToDisplay.length === 0 && (
+                <h2>No emails!</h2>
+            )}
+            {emailsToDisplay.length > 0 && emailsToDisplay}
         </div>
     );
 }
