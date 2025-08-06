@@ -14,7 +14,7 @@ const WelcomeScreen = () => {
                 <button className="google-btn" onClick={handleGoogleSignIn}>
           <span className="google-icon">
             <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
                 alt="Google Logo"
             />
           </span>
