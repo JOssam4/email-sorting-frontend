@@ -4,6 +4,7 @@ import Email from './Email';
 import { useQuery } from '@tanstack/react-query';
 import { PuffLoader } from 'react-spinners';
 import '../styles/DisplayPage.css';
+import { useNavigate } from "react-router-dom";
 
 interface Props {
     priority: Priority;
@@ -21,10 +22,16 @@ export default function DisplayPage(props: Props) {
         }
         return `http://localhost:8000/api/priorities/${priorityInUrl}`;
     }
-
+    const navigate = useNavigate();
     const { isPending, error, data } = useQuery({
         queryKey: [`${props.priority}PriorityEmails`],
-        queryFn: () => fetch(getQueryUrl(props.priority)).then(res => res.json()),
+        queryFn: () => fetch(getQueryUrl(props.priority))
+            .then(res => {
+                if (res.status === 401) {
+                    navigate('/');
+                }
+                return res.json()
+            }),
         retry: false,
         staleTime: 5000, // refetch after 5 minutes
     });
@@ -42,6 +49,7 @@ export default function DisplayPage(props: Props) {
     }
 
     if (error) {
+        console.dir(error);
         return (
             <div className={displayPageClassname}>
                 <h2>{error.message}</h2>
