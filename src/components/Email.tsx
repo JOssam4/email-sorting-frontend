@@ -11,7 +11,7 @@ function Email(props: EmailType) {
                     <span className="label">From:</span> {props.sent_from}
                 </div>
                 <div className="email-info">
-                    <span className="label">Sent:</span> {props.time_sent.toLocaleString()}
+                    <span className="label">Sent:</span> {new Date(props.time_sent).toLocaleString()}
                 </div>
             </div>
         </>
